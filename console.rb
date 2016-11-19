@@ -11,5 +11,14 @@ customer1 = Customer.new({
 customer1.save
 
 
+film1 = Film.new({
+  "title" => "Rogue One",
+  "price" => 8.5
+  })
+
+film1.save
+
+
+
 binding.pry
 nil

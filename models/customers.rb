@@ -17,7 +17,7 @@ class Customer
     returning *
     ;"
     result = SqlEr.run(sql)
-    @id = result[0]['id']
+    @id = result[0]['id'].to_i
   end
 
   def self.all
