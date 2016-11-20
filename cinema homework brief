@@ -1,4 +1,4 @@
-###Advanced extensions:
-  - Add a new 'time' row for the tickets
-    - Write a method that finds out what is the most popular time (most tickets sold) for a given film
+- Write a method that finds out what is the most popular time (most tickets sold) for a given film
+
+
   - Add a limit to available tickets.

@@ -32,7 +32,7 @@ film1 = Film.new({
   })
 
 film2 = Film.new({
-  "title" => "A new hope",
+  "title" => "A New Hope",
   "price" => 7
   })
 
@@ -53,13 +53,46 @@ film4.save
 
 ticket1 = Ticket.new({
   "customer_id" => customer1.id,
-  "film_id" => film1.id
+  "film_id" => film1.id,
+  "film_time" => "19:00"
+  })
+
+ticket2 = Ticket.new({
+  "customer_id" => customer1.id,
+  "film_id" => film2.id,
+  "film_time" => "21:00"
+  })
+
+ticket3 = Ticket.new({
+  "customer_id" => customer2.id,
+  "film_id" => film1.id,
+  "film_time" => "19:00"
+  })
+
+ticket4 = Ticket.new({
+  "customer_id" => customer2.id,
+  "film_id" => film1.id,
+  "film_time" => "23:00"
+  })
+
+ticket5 = Ticket.new({
+  "customer_id" => customer3.id,
+  "film_id" => film3.id,
+  "film_time" => "12:30"
+  })
+
+ticket6 = Ticket.new({
+  "customer_id" => customer3.id,
+  "film_id" => film4.id,
+  "film_time" => "17:00"
   })
 
 ticket1.save
-ticket1.save
-ticket1.save
-ticket1.save
+ticket2.save
+ticket3.save
+ticket4.save
+ticket5.save
+ticket6.save
 
 binding.pry
 nil

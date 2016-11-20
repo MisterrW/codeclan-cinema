@@ -1,3 +1,4 @@
+require('time')
 require_relative('../db/sql_er')
 
 class Ticket
@@ -5,7 +6,8 @@ class Ticket
   def initialize( options )
     @film_id = options['film_id'].to_i
     @customer_id = options['customer_id'].to_i
-    @id = options[:id].to_i if options[:id]
+    @id = options['id'].to_i if options['id']
+    @time = Time.parse(options['film_time'])
   end
 
   def get_film_price()
@@ -31,9 +33,9 @@ class Ticket
     decrease_customer_funds(cost)
     sql = "
     INSERT INTO tickets
-    (customer_id, film_id)
+    (customer_id, film_id, film_time)
     VALUES
-    (#{@customer_id}, #{@film_id})
+    (#{@customer_id}, #{@film_id}, '#{@time}')
     returning *
     ;"
     result = SqlEr.run(sql)
@@ -43,7 +45,7 @@ class Ticket
   def update()
     sql = "
     UPDATE tickets
-    SET (customer_id, film_id) = (#{@customer_id}, #{@film_id}) 
+    SET (customer_id, film_id, film_time) = (#{@customer_id}, #{@film_id}, '#{@time}') 
     WHERE id = #{@id}
     ;"
     SqlEr.run(sql)
