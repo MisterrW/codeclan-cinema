@@ -16,5 +16,6 @@ CREATE TABLE films (
 
 CREATE TABLE tickets (
   customer_id INT8 references customers(id),  
-  film_id INT8 references films(id)
+  film_id INT8 references films(id),
+  id SERIAL8 primary key
 );

@@ -2,6 +2,7 @@ require_relative('../db/sql_er')
 
 class Customer
   attr_accessor :name, :funds
+  attr_reader :id
   def initialize( options )
     @name = options["name"]
     @funds = options["funds"].to_i

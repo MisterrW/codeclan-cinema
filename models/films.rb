@@ -6,7 +6,7 @@ class Film
   def initialize( options )
     @title = options['title']
     @price = options['price'].to_i
-    @id = options[:id].to_i if options[:id]
+    @id = options['id'].to_i if options['id']
   end
 
   def save
