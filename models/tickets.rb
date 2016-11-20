@@ -107,9 +107,3 @@ class Ticket
   end
 
 end
-
-
-
-
-
-

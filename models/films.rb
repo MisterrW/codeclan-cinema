@@ -52,6 +52,3 @@ class Film
     return result.map{ |hash| Film.new(hash) }
   end
 end
-
-# update
-# delete
