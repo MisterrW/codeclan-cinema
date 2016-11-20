@@ -66,12 +66,24 @@ class Ticket
     SqlEr.run(sql)
   end
 
-  def self.all
-    sql = "
-    SELECT * FROM tickets
-    ;"
+  def self.all()
+    sql = '
+    SELECT c.name AS "Customer",
+    f.title AS "Film",
+    t.film_time AS "Time"
+    FROM customers c
+    INNER JOIN tickets t
+    ON c.id = t.customer_id
+    INNER JOIN films f
+    ON f.id = t.film_id
+    ;'
     result = SqlEr.run(sql)
-    return result.map{ |hash| Ticket.new(hash) }
+    result.each do |result|
+        puts "Customer: #{result['Customer']}"
+        puts "Film: #{result['Film']}"
+        puts "Time: #{result['Time']}"
+        puts ""
+    end
   end
 
   def self.number_tickets_bought_by_customer(customer_id)
