@@ -21,6 +21,30 @@ class Customer
     @id = result[0]['id'].to_i
   end
 
+  def update()
+    sql = "
+    UPDATE customers
+    SET (name, funds) = ('#{@name}', #{@funds}) 
+    WHERE id = #{@id}
+    ;"
+    SqlEr.run(sql)
+  end
+
+  def delete()
+    return unless @id
+    sql = "
+    DELETE FROM customers WHERE id = #{@id}
+    ;"
+    SqlEr.run(sql)
+  end
+
+  def self.delete_all()
+    sql = "
+    DELETE FROM customers
+    ;"
+    SqlEr.run(sql)
+  end
+
   def self.all
     sql = "
     SELECT * FROM customers

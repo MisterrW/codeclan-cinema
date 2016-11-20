@@ -21,6 +21,29 @@ class Film
     @id = result[0]['id'].to_i
   end
 
+  def update()
+    sql = "
+    UPDATE films
+    SET (title, price) = ('#{@title}', #{@price}) WHERE id = #{@id}
+    ;"
+    SqlEr.run(sql)
+  end
+
+  def delete()
+    return unless @id
+    sql = "
+    DELETE FROM films WHERE id = #{@id}
+    ;"
+    SqlEr.run(sql)
+  end
+
+  def self.delete_all()
+    sql = "
+    DELETE FROM films
+    ;"
+    SqlEr.run(sql)
+  end
+
   def self.all
     sql = "
     SELECT * FROM films
@@ -29,3 +52,6 @@ class Film
     return result.map{ |hash| Film.new(hash) }
   end
 end
+
+# update
+# delete
