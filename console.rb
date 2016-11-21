@@ -2,7 +2,6 @@ require('pry-byebug')
 require_relative('models/customers')
 require_relative('models/films')
 require_relative('models/tickets')
-require_relative('models/ticket_view')
 
 Ticket.delete_all()
 Film.delete_all()
@@ -88,12 +87,18 @@ ticket6 = Ticket.new({
   "film_time" => "17:00"
   })
 
-ticket1.save
-ticket2.save
-ticket3.save
-ticket4.save
-ticket5.save
-ticket6.save
 
-binding.pry
+ticket1.save()
+ticket2.save()
+ticket3.save()
+ticket4.save()
+ticket5.save()
+ticket6.save()
+
+
+puts Ticket.all()
+
+puts Ticket.most_popular_time("Rogue One")
+
+
 nil

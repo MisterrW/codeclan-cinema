@@ -106,4 +106,25 @@ class Ticket
     return result2.length
   end
 
+  def self.most_popular_time(film_title)
+    sql1 = "
+    SELECT * from films 
+    WHERE title = '#{film_title}'
+    ;"
+    film_record = SqlEr.run(sql1)
+    id_for_query = film_record[0]['id']
+    
+    sql2 = "
+    SELECT film_time
+    FROM tickets
+    WHERE film_id = #{id_for_query}
+    GROUP BY film_time
+    ORDER BY count(*) DESC
+    LIMIT 1
+    ;"
+    result = SqlEr.run(sql2)
+
+    return "The most popular showtime for #{film_title} is #{result[0]["film_time"]}"
+  end
+
 end
