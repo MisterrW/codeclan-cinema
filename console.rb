@@ -26,6 +26,8 @@ customer1.save
 customer2.save
 customer3.save
 
+binding.pry
+
 film1 = Film.new({
   "title" => "Rogue One",
   "price" => 8.5
@@ -95,8 +97,9 @@ ticket4.save()
 ticket5.save()
 ticket6.save()
 
-
 puts Ticket.all()
+
+binding.pry
 
 puts Ticket.most_popular_time("Rogue One")
 
